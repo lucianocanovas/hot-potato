@@ -11,8 +11,16 @@ config_version=5
 [application]
 
 config/name="Hot Potato"
+run/main_scene="res://scenes/mainMenu/mainMenu.tscn"
 config/features=PackedStringArray("4.4", "Mobile")
+
+[editor]
+
+naming/node_name_casing=1
+naming/scene_name_casing=1
+naming/script_name_casing=1
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"

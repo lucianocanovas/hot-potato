@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dydf23tufjgxt"]
+
+[node name="mainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="title" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "HOT POTATO"
+horizontal_alignment = 1
+
+[node name="start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 56.0
+offset_right = 109.0
+offset_bottom = 87.0
+text = "START GAME"
