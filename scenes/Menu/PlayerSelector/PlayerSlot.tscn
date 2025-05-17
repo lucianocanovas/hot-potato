@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyvgmh605pkor"]
+
+[ext_resource type="Script" uid="uid://dsf26frhx77ge" path="res://scenes/Menu/PlayerSelector/PlayerSlot.gd" id="1_v3y4g"]
+
+[node name="playerSlot" type="VBoxContainer"]
+script = ExtResource("1_v3y4g")
+
+[node name="nameSelector" type="LineEdit" parent="."]
+layout_mode = 2
+placeholder_text = "PLAYERS NAME"

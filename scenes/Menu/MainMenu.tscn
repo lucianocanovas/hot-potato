@@ -1,10 +1,13 @@
-[gd_scene format=3 uid="uid://dydf23tufjgxt"]
+[gd_scene load_steps=2 format=3 uid="uid://dydf23tufjgxt"]
+
+[ext_resource type="Script" uid="uid://ctfgk6cijqn1n" path="res://scenes/Menu/MainMenu.gd" id="1_gtj50"]
 
 [node name="mainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_gtj50")
 
 [node name="title" type="Label" parent="."]
 layout_mode = 0
@@ -20,3 +23,5 @@ offset_top = 56.0
 offset_right = 109.0
 offset_bottom = 87.0
 text = "START GAME"
+
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
