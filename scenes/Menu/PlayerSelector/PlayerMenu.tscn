@@ -25,6 +25,7 @@ offset_left = 5.0
 offset_top = 31.0
 offset_right = 168.0
 offset_bottom = 135.0
+columns = 2
 
 [node name="start" type="Button" parent="."]
 layout_mode = 0

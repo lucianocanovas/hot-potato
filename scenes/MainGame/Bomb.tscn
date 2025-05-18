@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://mxtemd43dmw8"]
+
+[ext_resource type="Texture2D" uid="uid://442o0oc40qhk" path="res://assets/bomb.png" id="1_4dw51"]
+[ext_resource type="Texture2D" uid="uid://cdkc3s2f6bi0d" path="res://assets/arrow.png" id="2_3msjx"]
+
+[node name="bomb" type="Node2D"]
+
+[node name="bombSprite" type="Sprite2D" parent="."]
+position = Vector2(506, 289)
+scale = Vector2(8, 8)
+texture = ExtResource("1_4dw51")
+
+[node name="pointer" type="Node2D" parent="."]
+
+[node name="pointerSprite" type="Sprite2D" parent="pointer"]
+z_index = -1
+position = Vector2(641.313, 320.137)
+scale = Vector2(8.29297, 4.17896)
+texture = ExtResource("2_3msjx")
