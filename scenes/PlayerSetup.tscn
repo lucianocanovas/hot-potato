@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5ovx4mv7f1qh"]
+
+[ext_resource type="Script" uid="uid://chu4evu7uskd1" path="res://scripts/PlayerSetup.gd" id="1_8ae13"]
+
+[node name="PlayerSetup" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_8ae13")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="NameInput" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+placeholder_text = "NAME"
+
+[node name="AddButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "ADD"
+
+[node name="PlayerList" type="ItemList" parent="VBoxContainer"]
+layout_mode = 2
+auto_height = true
+
+[node name="RemoveButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "REMOVE"
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "START"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/AddButton" to="." method="_on_add_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/RemoveButton" to="." method="_on_remove_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

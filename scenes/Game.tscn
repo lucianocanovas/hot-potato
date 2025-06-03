@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://vor5lmwpcy24"]
+
+[ext_resource type="Script" uid="uid://23ptdpnq7f07" path="res://scripts/Game.gd" id="1_cpr0p"]
+[ext_resource type="Texture2D" uid="uid://dpuvtdf0agb0g" path="res://assets/arrow.png" id="1_qbsmt"]
+[ext_resource type="Texture2D" uid="uid://p8ot0cybr11r" path="res://assets/bomb.png" id="2_cpr0p"]
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_cpr0p")
+
+[node name="PlayerLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Arrow" type="Sprite2D" parent="."]
+position = Vector2(142, 157)
+texture = ExtResource("1_qbsmt")
+
+[node name="Bomb" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 134.0
+offset_right = 141.0
+offset_bottom = 174.0
+texture = ExtResource("2_cpr0p")
+
+[node name="Time" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 39.0
+offset_right = 45.0
+offset_bottom = 62.0
+
+[node name="TurnButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 56.0
+offset_right = 165.0
+offset_bottom = 87.0
+text = "PLAY TURN"
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="MinigameContainer" type="Node" parent="."]
+
+[connection signal="pressed" from="TurnButton" to="." method="_on_turn_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

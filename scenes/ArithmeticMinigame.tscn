@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm3vua4urtb60"]
+
+[ext_resource type="Script" uid="uid://c4fatd8c8xcbn" path="res://scripts/ArithmeticMinigame.gd" id="1_rxo80"]
+
+[node name="ArithmeticMinigame" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_rxo80")
+
+[node name="Operation" type="Label" parent="."]
+layout_mode = 0
+offset_left = 225.0
+offset_top = 91.0
+offset_right = 303.0
+offset_bottom = 114.0
+
+[node name="Answer" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 220.0
+offset_top = 138.0
+offset_right = 308.0
+offset_bottom = 169.0
+placeholder_text = "ANSWER"
+
+[node name="SubmitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 194.0
+offset_right = 294.0
+offset_bottom = 225.0
+text = "SUBMIT"
