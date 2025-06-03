@@ -14,7 +14,7 @@ offset_bottom = 40.0
 
 [node name="Title" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "NINJA DEFUSE"
+text = "HOT POTATO"
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2

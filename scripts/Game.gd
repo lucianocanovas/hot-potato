@@ -1,6 +1,7 @@
 extends Control
 
 @onready var player_label: Label = $PlayerLabel
+@onready var players_container: Node2D = $PlayersContainer
 @onready var arrow: Sprite2D = $Arrow
 @onready var time_label: Label = $Time
 @onready var turn_button: Button = $TurnButton
@@ -8,6 +9,7 @@ extends Control
 @onready var minigame_container: Node = $MinigameContainer
 
 const TOTAL_TIME = 30.0
+const RAD = 200
 var time = TOTAL_TIME
 var players = []
 var index = 0
@@ -21,8 +23,10 @@ func _ready() -> void:
 func update_ui() -> void:
 	player_label.text = players[index] + " turn"
 	time_label.text = str(round(time))
-	arrow.rotation_degrees = index * (360 / players.size())
+	var angle = 360 / players.size()
+	arrow.rotation += angle
 	turn_button.visible = true
+	showPlayers()
 	for child in minigame_container.get_children():
 		child.queue_free()
 
@@ -66,3 +70,16 @@ func showWinner() -> void:
 	timer.stop()
 	for child in minigame_container.get_children():
 		child.queue_free()
+
+func showPlayers() -> void:
+	for child in players_container.get_children():
+		child.queue_free()
+	for i in players.size():
+		var playerName = players[i]
+		var angle = deg_to_rad((360/players.size()) * i)
+		var pos = Vector2(cos(angle), sin(angle)) * RAD
+		var label = Label.new()
+		label.text = playerName
+		label.set_position(pos - Vector2(label.get_minimum_size().x / 2, label.get_minimum_size().y / 2))
+		players_container.add_child(label)
+		

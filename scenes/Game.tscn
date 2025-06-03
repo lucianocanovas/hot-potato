@@ -15,15 +15,16 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="Arrow" type="Sprite2D" parent="."]
-position = Vector2(142, 157)
+position = Vector2(537.5, 328)
+scale = Vector2(2.40625, 1)
 texture = ExtResource("1_qbsmt")
 
 [node name="Bomb" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 101.0
-offset_top = 134.0
-offset_right = 141.0
-offset_bottom = 174.0
+offset_left = 515.0
+offset_top = 302.0
+offset_right = 555.0
+offset_bottom = 342.0
 texture = ExtResource("2_cpr0p")
 
 [node name="Time" type="Label" parent="."]
@@ -42,6 +43,9 @@ offset_bottom = 87.0
 text = "PLAY TURN"
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="PlayersContainer" type="Node2D" parent="."]
+position = Vector2(535, 326)
 
 [node name="MinigameContainer" type="Node" parent="."]
 
