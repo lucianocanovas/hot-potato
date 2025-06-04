@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://qrxxvnpebuf0"]
+
+[ext_resource type="Script" uid="uid://cskqe8ycdqxmk" path="res://scripts/Theball.gd" id="1_j65nk"]
+[ext_resource type="Texture2D" uid="uid://bgdapiggi1xk8" path="res://assets/kenney_rolling-ball-assets/PNG/Default/ball_red_small.png" id="2_w4ja3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j65nk"]
+radius = 17.0294
+
+[node name="theball" type="Node2D"]
+position = Vector2(38, 92)
+script = ExtResource("1_j65nk")
+
+[node name="sprite2d" type="Sprite2D" parent="."]
+texture = ExtResource("2_w4ja3")
+
+[node name="button" type="Button" parent="sprite2d"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -18.0
+offset_top = -18.0
+offset_right = 18.0
+offset_bottom = 18.0
+metadata/_edit_use_anchors_ = true
+
+[node name="area2d" type="Area2D" parent="."]
+
+[node name="collisionShape2d" type="CollisionShape2D" parent="area2d"]
+shape = SubResource("CircleShape2D_j65nk")
+
+[connection signal="button_down" from="sprite2d/button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="sprite2d/button" to="." method="_on_button_button_up"]
+[connection signal="body_entered" from="area2d" to="." method="_on_area_2d_body_entered"]
