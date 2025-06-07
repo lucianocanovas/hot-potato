@@ -42,7 +42,13 @@ func _on_timer_tick() -> void:
 		eliminatePlayer()
 
 func loadMinigame() -> void:
-	var minigame = preload("res://scenes/ArithmeticMinigame.tscn").instantiate()
+	#guardar las escenas de juegos en un array
+	var arrayMinigames = ["res://scenes/ArithmeticMinigame.tscn","res://scenes/Laberinto.tscn"]
+	#Alguna funcion que elija al azar 
+	var rng = RandomNumberGenerator.new()
+	var minigameChoosed = rng.randf_range(0, len(arrayMinigames))
+	print(arrayMinigames[minigameChoosed])
+	var minigame = load(arrayMinigames[minigameChoosed]).instantiate()
 	minigame_container.add_child(minigame)
 	minigame.connect("minigameFinished", Callable(self, "endTurn"))
 

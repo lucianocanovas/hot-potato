@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dn2bigmild8vr"]
+
+[ext_resource type="Texture2D" uid="uid://mo43rkdvt11l" path="res://assets/kenney_rolling-ball-assets/PNG/Default/background_brown.png" id="1_gsh6u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n5n23"]
+size = Vector2(49, 63)
+
+[node name="Salida" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 0.5)
+scale = Vector2(1, 0.984375)
+texture = ExtResource("1_gsh6u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_n5n23")
