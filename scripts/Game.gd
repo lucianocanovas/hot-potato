@@ -7,6 +7,7 @@ extends Control
 @onready var turn_button: Button = $TurnButton
 @onready var timer: Timer = $Timer
 @onready var minigame_container: Node = $MinigameContainer
+@onready var bomb: TextureRect = $Bomb
 
 const TOTAL_TIME = 30.0
 const RAD = 200
@@ -29,6 +30,9 @@ func update_ui() -> void:
 	showPlayers()
 	for child in minigame_container.get_children():
 		child.queue_free()
+	bomb.visible = true
+	arrow.visible = true
+	players_container.visible = true
 
 func _on_turn_button_pressed() -> void:
 	turn_button.visible = false
@@ -42,6 +46,10 @@ func _on_timer_tick() -> void:
 		eliminatePlayer()
 
 func loadMinigame() -> void:
+	#hacemos invisibles los nombres,la bomba y la flecha
+	bomb.visible = false
+	arrow.visible = false
+	players_container.visible = false
 	#guardar las escenas de juegos en un array
 	var arrayMinigames = ["res://scenes/ArithmeticMinigame.tscn","res://scenes/Laberinto.tscn"]
 	#Alguna funcion que elija al azar 
@@ -51,6 +59,7 @@ func loadMinigame() -> void:
 	var minigame = load(arrayMinigames[minigameChoosed]).instantiate()
 	minigame_container.add_child(minigame)
 	minigame.connect("minigameFinished", Callable(self, "endTurn"))
+
 
 func endTurn() -> void:
 	timer.stop()
