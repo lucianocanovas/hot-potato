@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dn2bigmild8vr"]
 
-[ext_resource type="Texture2D" uid="uid://mo43rkdvt11l" path="res://assets/kenney_rolling-ball-assets/PNG/Default/background_brown.png" id="1_gsh6u"]
+[ext_resource type="Texture2D" uid="uid://by4sdgobbqgs0" path="res://assets/kenney_rolling-ball-assets/PNG/Default/hole_small_end.png" id="1_gsh6u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n5n23"]
 size = Vector2(49, 63)
