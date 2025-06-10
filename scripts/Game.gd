@@ -95,6 +95,7 @@ func showPlayers() -> void:
 		var pos = Vector2(cos(angle), sin(angle)) * RAD
 		var label = Label.new()
 		label.text = playerName
+		label.add_theme_font_size_override("font_size", 32)
 		label.set_position(pos - Vector2(label.get_minimum_size().x / 2, label.get_minimum_size().y / 2))
 		players_container.add_child(label)
 		

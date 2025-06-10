@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://vor5lmwpcy24"]
+[gd_scene load_steps=8 format=4 uid="uid://vor5lmwpcy24"]
 
 [ext_resource type="Script" uid="uid://23ptdpnq7f07" path="res://scripts/Game.gd" id="1_cpr0p"]
 [ext_resource type="Texture2D" uid="uid://dpuvtdf0agb0g" path="res://assets/arrow.png" id="1_qbsmt"]
 [ext_resource type="Texture2D" uid="uid://mo43rkdvt11l" path="res://assets/kenney_rolling-ball-assets/PNG/Default/background_brown.png" id="2_78awf"]
 [ext_resource type="Texture2D" uid="uid://p8ot0cybr11r" path="res://assets/bomb.png" id="2_cpr0p"]
+[ext_resource type="AudioStream" uid="uid://c7l1akaxldjem" path="res://assets/music/Boogie Party.mp3" id="5_s0nni"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s0nni"]
 texture = ExtResource("2_78awf")
@@ -46,6 +47,10 @@ position = Vector2(535, 326)
 
 [node name="MinigameContainer" type="Node" parent="."]
 
+[node name="BoogieParty" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_s0nni")
+autoplay = true
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TurnButton" type="Button" parent="CanvasLayer"]
@@ -71,6 +76,8 @@ offset_top = -44.0
 offset_right = 40.0
 offset_bottom = 44.0
 grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 
 [node name="PlayerLabel" type="Label" parent="CanvasLayer"]
@@ -84,6 +91,8 @@ offset_top = -44.0
 offset_bottom = 44.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 horizontal_alignment = 2
 vertical_alignment = 1
