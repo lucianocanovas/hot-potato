@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="hot-potato"
-run/main_scene="uid://ctpja1hf4y3f2"
+run/main_scene="uid://cisyutchc1r3o"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 
 [autoload]
