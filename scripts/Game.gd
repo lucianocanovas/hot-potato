@@ -1,10 +1,10 @@
 extends Control
 
-@onready var player_label: Label = $PlayerLabel
+@onready var player_label: Label = $CanvasLayer/PlayerLabel
 @onready var players_container: Node2D = $PlayersContainer
 @onready var arrow: Sprite2D = $Arrow
-@onready var time_label: Label = $Time
-@onready var turn_button: Button = $TurnButton
+@onready var time_label: Label = $CanvasLayer/Time
+@onready var turn_button: Button = $CanvasLayer/TurnButton
 @onready var timer: Timer = $Timer
 @onready var minigame_container: Node = $MinigameContainer
 @onready var bomb: TextureRect = $Bomb
@@ -23,7 +23,7 @@ func _ready() -> void:
 	
 func update_ui() -> void:
 	player_label.text = players[index] + " turn"
-	time_label.text = str(round(time))
+	time_label.text = "Time: " + str(round(time))
 	var angle = 360 / players.size()
 	arrow.rotation += angle
 	turn_button.visible = true
@@ -41,7 +41,7 @@ func _on_turn_button_pressed() -> void:
 
 func _on_timer_tick() -> void:
 	time -= 1
-	time_label.text = str(round(time))
+	time_label.text = "Time: " + str(round(time))
 	if time <= 0:
 		eliminatePlayer()
 
