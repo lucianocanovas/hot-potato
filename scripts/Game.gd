@@ -15,6 +15,10 @@ var time = TOTAL_TIME
 var players = []
 var index = 0
 
+var angle = 0
+var firstTime = true
+var player_eliminated = false
+
 func _ready() -> void:
 	players = Global.players
 	update_ui()
@@ -22,10 +26,26 @@ func _ready() -> void:
 	timer.timeout.connect(_on_timer_tick)
 	
 func update_ui() -> void:
+	print(players)
 	player_label.text = players[index] + " turn"
 	time_label.text = "Time: " + str(round(time))
-	var angle = 360 / players.size()
-	arrow.rotation += angle
+	if player_eliminated:
+		arrow.rotation = deg_to_rad(0)
+		var contAux = 0
+		while players[contAux] != players[index]:
+			arrow.rotation += deg_to_rad(360 / players.size())
+			contAux += 1
+		player_eliminated = false
+	else:
+		if !(firstTime):
+		
+			angle = deg_to_rad(360 / players.size())
+			print("el angulo")
+			print(angle)
+			arrow.rotation += angle
+			print(arrow.rotation)
+		else:
+			firstTime = false
 	turn_button.visible = true
 	showPlayers()
 	for child in minigame_container.get_children():
@@ -67,6 +87,7 @@ func endTurn() -> void:
 	update_ui()
 
 func eliminatePlayer() -> void:
+	player_eliminated = true
 	players.remove_at(index)
 	if players.size() == 1:
 		showWinner()
@@ -99,3 +120,9 @@ func showPlayers() -> void:
 		label.set_position(pos - Vector2(label.get_minimum_size().x / 2, label.get_minimum_size().y / 2))
 		players_container.add_child(label)
 		
+func getPlayerLabel(name: String) -> Label:
+	var arrayLabelPlayers = players_container.get_children()
+	for child in arrayLabelPlayers:
+		if child.text == name:
+			return child		
+	return null
