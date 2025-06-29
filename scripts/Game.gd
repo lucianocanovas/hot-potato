@@ -20,6 +20,7 @@ var angle = 0
 var firstTime = true
 var player_eliminated = false
 const PLAYER = preload("res://scenes/Player.tscn")
+var deathPlayers = 0
 func _ready() -> void:
 	playersInfo = Global.players
 	#reconstruimos los jugadores
@@ -28,6 +29,7 @@ func _ready() -> void:
 		players_container.add_child(instance)
 		instance.namePlayer.text = data["name"]
 		instance.skin.frame = data["skin"]
+		print(instance.animated_sprite_2d)
 		players.append(instance)
 		print("///info///")
 		#print(players)
@@ -37,27 +39,35 @@ func _ready() -> void:
 	timer.timeout.connect(_on_timer_tick)
 	
 func update_ui() -> void:
-	print(players)
+	while players[index].isDead:
+		nextPlayer()
 	#Modificaciones debido a que players ahora guarda instancias de Player
 	player_label.text = players[index].namePlayer.text + " turn"
 	time_label.text = "Time: " + str(round(time))
-	if player_eliminated:
-		arrow.rotation = deg_to_rad(0)
-		var contAux = 0
-		while players[contAux] != players[index]:
-			arrow.rotation += deg_to_rad(360 / players.size())
-			contAux += 1
-		player_eliminated = false
-	else:
-		if !(firstTime):
-		
-			angle = deg_to_rad(360 / players.size())
-			print("el angulo")
-			print(angle)
-			arrow.rotation += angle
-			print(arrow.rotation)
-		else:
-			firstTime = false
+	#Solucion que se me viene a la mente con el tema de la flecha;
+	#Siempre empezar de 0, y sumarle la rotacion hasta que coincida con el jugador 
+	arrow.rotation = deg_to_rad(0)
+	var contAux = 0
+	while players[contAux] != players[index]:
+		arrow.rotation += deg_to_rad(360 / players.size())
+		contAux += 1
+	#if player_eliminated:
+		#arrow.rotation = deg_to_rad(0)
+		#var contAux = 0
+		#while players[contAux] != players[index]:
+			#arrow.rotation += deg_to_rad(360 / players.size())
+			#contAux += 1
+		#player_eliminated = false
+	#else:
+		#if !(firstTime):
+		#
+			#angle = deg_to_rad(360 / players.size())
+			#print("el angulo")
+			#print(angle)
+			#arrow.rotation += angle
+			#print(arrow.rotation)
+		#else:
+			#firstTime = false
 	turn_button.visible = true
 	showPlayers()
 	for child in minigame_container.get_children():
@@ -100,8 +110,11 @@ func endTurn() -> void:
 
 func eliminatePlayer() -> void:
 	player_eliminated = true
-	players.remove_at(index)
-	if players.size() == 1:
+	players[index].isDead = true
+	deathPlayers += 1
+	index += 1
+	#players.remove_at(index)
+	if (players.size() - 1) == deathPlayers:
 		showWinner()
 		return
 	if index >= players.size():
@@ -111,9 +124,14 @@ func eliminatePlayer() -> void:
 
 func nextPlayer() -> void:
 	index = (index + 1) % players.size()
+	while players[index].isDead:
+		index = (index + 1) % players.size()
 
 func showWinner() -> void:
-	player_label.text = "Winner: " + players[0].namePlayer.text
+	index = 0
+	while players[index].isDead:
+		index += 1
+	player_label.text = "Winner: " + players[index].namePlayer.text
 	turn_button.visible = false
 	timer.stop()
 	for child in minigame_container.get_children():
@@ -125,6 +143,10 @@ func showPlayers() -> void:
 		players_container.remove_child(child)
 	for i in players.size():
 		var player = players[i]
+		if player.isDead:
+			player.animated_sprite_2d.play("quemado")
+			player.animated_sprite_2d.visible = true
+			player.skin.visible = false
 		var angle = deg_to_rad((360/players.size()) * i)
 		var pos = Vector2(cos(angle), sin(angle)) * RAD
 		#var label = Label.new()

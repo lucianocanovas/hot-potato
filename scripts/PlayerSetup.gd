@@ -24,7 +24,7 @@ func _on_add_button_pressed() -> void:
 	#print("aaa",label)  # debería imprimir <Label#...> si lo encontró
 	instancePlayer.namePlayer.text = name
 	instancePlayer.skin.frame = numberSkin
-	
+	instancePlayer.animated_sprite_2d.animation 
 	players.append(instancePlayer)
 	#print(players)
 	player_list.add_item(name)
@@ -44,6 +44,7 @@ func _on_start_button_pressed() -> void:
 	#print(players)
 	#Global.players = players.duplicate()
 	for player in players:
+		print(player.animated_sprite_2d)
 		var player_data = {
 			"name": player.namePlayer.text,
 			"skin": player.skin.frame,

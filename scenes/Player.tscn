@@ -50,7 +50,7 @@ position = Vector2(16, 15)
 scale = Vector2(2, 1.9375)
 sprite_frames = SubResource("SpriteFrames_mdl7e")
 animation = &"quemado"
-frame_progress = 0.533632
+frame_progress = 0.727024
 
 [node name="Name" type="Label" parent="."]
 offset_left = -18.0
