@@ -13,21 +13,33 @@ const TOTAL_TIME = 30.0
 const RAD = 200
 var time = TOTAL_TIME
 var players = []
+var playersInfo
 var index = 0
 
 var angle = 0
 var firstTime = true
 var player_eliminated = false
-
+const PLAYER = preload("res://scenes/Player.tscn")
 func _ready() -> void:
-	players = Global.players
+	playersInfo = Global.players
+	#reconstruimos los jugadores
+	for data in playersInfo:
+		var instance = PLAYER.instantiate()
+		players_container.add_child(instance)
+		instance.namePlayer.text = data["name"]
+		instance.skin.frame = data["skin"]
+		players.append(instance)
+		print("///info///")
+		#print(players)
+		#print(playersInfo)
 	update_ui()
 	timer.wait_time = 1.0
 	timer.timeout.connect(_on_timer_tick)
 	
 func update_ui() -> void:
 	print(players)
-	player_label.text = players[index] + " turn"
+	#Modificaciones debido a que players ahora guarda instancias de Player
+	player_label.text = players[index].namePlayer.text + " turn"
 	time_label.text = "Time: " + str(round(time))
 	if player_eliminated:
 		arrow.rotation = deg_to_rad(0)
@@ -101,7 +113,7 @@ func nextPlayer() -> void:
 	index = (index + 1) % players.size()
 
 func showWinner() -> void:
-	player_label.text = "Winner: " + players[0]
+	player_label.text = "Winner: " + players[0].namePlayer.text
 	turn_button.visible = false
 	timer.stop()
 	for child in minigame_container.get_children():
@@ -109,16 +121,26 @@ func showWinner() -> void:
 
 func showPlayers() -> void:
 	for child in players_container.get_children():
-		child.queue_free()
+		#child.queue_free()
+		players_container.remove_child(child)
 	for i in players.size():
-		var playerName = players[i]
+		var player = players[i]
 		var angle = deg_to_rad((360/players.size()) * i)
 		var pos = Vector2(cos(angle), sin(angle)) * RAD
-		var label = Label.new()
-		label.text = playerName
-		label.add_theme_font_size_override("font_size", 32)
-		label.set_position(pos - Vector2(label.get_minimum_size().x / 2, label.get_minimum_size().y / 2))
-		players_container.add_child(label)
+		#var label = Label.new()
+		#label.text = playerName
+		player.namePlayer.add_theme_font_size_override("font_size", 32)
+		#player.set_position(pos - Vector2(player.get_minimum_size().x / 2, player.get_minimum_size().y / 2))
+		print("///MAS INFO///")
+		print(player.namePlayer.text)
+		print(player.skin.texture)
+		
+		
+		player.position = pos
+		
+		player.visible = true
+		players_container.add_child(player)
+		
 		
 func getPlayerLabel(name: String) -> Label:
 	var arrayLabelPlayers = players_container.get_children()
