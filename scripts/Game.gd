@@ -7,7 +7,7 @@ extends Control
 @onready var turn_button: Button = $CanvasLayer/TurnButton
 @onready var timer: Timer = $Timer
 @onready var minigame_container: Node = $MinigameContainer
-@onready var bomb: TextureRect = $Bomb
+@onready var bomb: Sprite2D = $Bomb
 
 const TOTAL_TIME = 30.0
 const RAD = 200
@@ -83,9 +83,17 @@ func _on_turn_button_pressed() -> void:
 
 func _on_timer_tick() -> void:
 	time -= 1
+	if (time > 20):
+		bomb.frame = 0
+	else:
+		if (time > 10 and time <= 20):
+			bomb.frame = 1
+		else: 
+			bomb.frame = 2
 	time_label.text = "Time: " + str(round(time))
 	if time <= 0:
 		eliminatePlayer()
+		bomb.frame = 1
 
 func loadMinigame() -> void:
 	#hacemos invisibles los nombres,la bomba y la flecha
