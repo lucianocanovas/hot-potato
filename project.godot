@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="hot-potato"
+config/tags=PackedStringArray("club")
 run/main_scene="uid://cisyutchc1r3o"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="uid://ds3l1846ty5ld"
@@ -19,6 +20,14 @@ config/icon="uid://ds3l1846ty5ld"
 
 Global="*res://Global.gd"
 Utils="*res://globals/utils.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
+
+[gui]
+
+theme/custom_font="uid://cuqjfglqr4yjb"
 
 [input]
 

@@ -28,7 +28,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAEAAAABAAAAAAABAAA
 tile_set = SubResource("TileSet_aug50")
 
 [node name="Arrow" type="Sprite2D" parent="."]
-position = Vector2(548, 328)
+position = Vector2(577, 328)
 scale = Vector2(3.75, 1.15625)
 texture = ExtResource("1_qbsmt")
 
@@ -91,7 +91,7 @@ vertical_alignment = 1
 
 [node name="Bomb" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(529, 319)
+position = Vector2(564, 319)
 scale = Vector2(2.03711, 1.90625)
 texture = ExtResource("6_aug50")
 hframes = 10

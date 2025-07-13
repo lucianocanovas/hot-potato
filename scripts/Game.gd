@@ -101,7 +101,12 @@ func loadMinigame() -> void:
 	arrow.visible = false
 	players_container.visible = false
 	#guardar las escenas de juegos en un array
-	var arrayMinigames = ["res://scenes/ArithmeticMinigame.tscn","res://scenes/Laberinto.tscn"]
+	var arrayMinigames = [
+		"res://scenes/ArithmeticMinigame.tscn",
+		"res://scenes/Laberinto.tscn",
+		"res://scenes/Laberinto2.tscn",
+		"res://scenes/Laberinto3.tscn"
+		]
 	#Alguna funcion que elija al azar 
 	var rng = RandomNumberGenerator.new()
 	var minigameChoosed = rng.randf_range(0, len(arrayMinigames))
@@ -128,6 +133,7 @@ func eliminatePlayer() -> void:
 	if index >= players.size():
 		index = 0
 	time = TOTAL_TIME
+	timer.stop()
 	update_ui()
 
 func nextPlayer() -> void:

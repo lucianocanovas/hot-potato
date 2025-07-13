@@ -1,0 +1,10 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://cuqjfglqr4yjb"]
+
+[ext_resource type="FontFile" uid="uid://bh0qsw7x6hx64" path="res://Cute Dino.ttf" id="1_v2pgh"]
+
+[resource]
+base_font = ExtResource("1_v2pgh")
+opentype_features = {
+1667329140: 0
+}
+spacing_top = 10
