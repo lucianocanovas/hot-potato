@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5ovx4mv7f1qh"]
+[gd_scene load_steps=3 format=3 uid="uid://c5ovx4mv7f1qh"]
 
 [ext_resource type="Script" uid="uid://chu4evu7uskd1" path="res://scripts/PlayerSetup.gd" id="1_8ae13"]
+[ext_resource type="Texture2D" uid="uid://c08dhacundlfn" path="res://assets/kenney_rolling-ball-assets/PNG/Default/background_green.png" id="2_o0n5f"]
 
 [node name="PlayerSetup" type="Control"]
 layout_mode = 3
@@ -10,6 +11,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8ae13")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_o0n5f")
+stretch_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
