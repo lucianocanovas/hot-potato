@@ -133,6 +133,7 @@ func eliminatePlayer() -> void:
 	if index >= players.size():
 		index = 0
 	time = TOTAL_TIME
+	timer.stop()
 	update_ui()
 
 func nextPlayer() -> void:
