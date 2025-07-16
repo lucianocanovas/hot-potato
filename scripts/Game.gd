@@ -142,14 +142,18 @@ func nextPlayer() -> void:
 		index = (index + 1) % players.size()
 
 func showWinner() -> void:
+	
 	index = 0
 	while players[index].isDead:
 		index += 1
-	player_label.text = "Winner: " + players[index].namePlayer.text
+	Global.winner["name"] = players[index].namePlayer.text
+	Global.winner["sprite"] = players[index].skin.frame
+	#player_label.text = "Winner: " + players[index].namePlayer.text
 	turn_button.visible = false
 	timer.stop()
 	for child in minigame_container.get_children():
 		child.queue_free()
+	get_tree().change_scene_to_file("res://scenes/WinnerScene.tscn")
 
 func showPlayers() -> void:
 	for child in players_container.get_children():

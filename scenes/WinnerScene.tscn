@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://dt32up3s3f8yu"]
+
+[ext_resource type="Texture2D" uid="uid://ccq6rri56ycjw" path="res://assets/kenney_rolling-ball-assets/PNG/Retina/background_blue.png" id="1_i5cvv"]
+[ext_resource type="Script" uid="uid://cluknwexqicpr" path="res://scripts/WinnerScene.gd" id="1_p1n6i"]
+[ext_resource type="Texture2D" uid="uid://ke1ugrkrt4bl" path="res://assets/SlimeAzul1.png" id="3_l850s"]
+[ext_resource type="AudioStream" uid="uid://duggigsnk1quj" path="res://assets/music/Drum Roll Ta-Da Sound Effect.ogg" id="4_6dmad"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p1n6i")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 646.0
+texture = ExtResource("1_i5cvv")
+stretch_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -351.0
+offset_top = -99.0
+offset_right = 349.0
+offset_bottom = 116.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "And the winner is..."
+horizontal_alignment = 1
+
+[node name="NameWinner" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="SpriteWinner" type="Sprite2D" parent="VBoxContainer"]
+texture_filter = 1
+position = Vector2(353, 138)
+scale = Vector2(5.53125, 5.46875)
+texture = ExtResource("3_l850s")
+hframes = 10
+vframes = 8
+
+[node name="Restart" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -350.0
+offset_top = -131.0
+offset_right = 350.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "PLAY AGAIN"
+
+[node name="WinnerSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_6dmad")
+
+[connection signal="button_up" from="Restart" to="." method="_on_restart_button_up"]
