@@ -1,8 +1,8 @@
 extends Control
 
-@onready var operation: Label = $Operation
-@onready var answer: LineEdit = $Answer
-@onready var submit_button: Button = $SubmitButton
+@onready var operation: Label = %Operation
+@onready var answer: LineEdit = %Answer
+@onready var submit_button: Button = %SubmitButton
 
 var result: int
 
@@ -30,3 +30,7 @@ func verify() -> void:
 		return
 	if int(ans) == result:
 		emit_signal("minigameFinished")
+
+
+func _on_answer_text_submitted(new_text: String) -> void:
+	verify()

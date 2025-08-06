@@ -3,9 +3,10 @@ extends Control
 @onready var name_input: LineEdit = $VBoxContainer/HBoxContainer/NameInput
 @onready var player_list: ItemList = $VBoxContainer/PlayerList
 const PLAYER = preload("res://scenes/Player.tscn")
-const MAX_PLAYERS = 10
+const MAX_PLAYERS = 7
 var players = []
 var instancePlayer
+
 func _on_add_button_pressed() -> void:
 	var name = name_input.text.strip_edges()
 	if name == "":
