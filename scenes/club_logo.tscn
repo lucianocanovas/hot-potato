@@ -49,4 +49,4 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
 theme_override_colors/font_color = Color(0.329412, 0.329412, 0.329412, 1)
 theme_override_font_sizes/font_size = 64
-text = "Club de Programación"
+text = "Club de Programacion"
